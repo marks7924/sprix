@@ -941,6 +941,10 @@ console.log("Incremented Count:", count);`
         heroJsTrackBtn: document.getElementById('hero-js-track-btn'),
         heroPyTrackBtn: document.getElementById('hero-py-track-btn'),
 
+        // Sidebar Collapse Controls
+        sidebarCollapseBtn: document.getElementById('sidebar-collapse-btn'),
+        sidebarExpandBtn: document.getElementById('sidebar-expand-btn'),
+
         // Mobile Responsiveness Controls
         mobileMenuToggle: document.getElementById('mobile-menu-toggle'),
         sidebarOverlay: document.getElementById('sidebar-overlay'),
@@ -1723,6 +1727,24 @@ console.log("Incremented Count:", count);`
         if (DOM.navBtnHome) DOM.navBtnHome.classList.remove('active');
         if (DOM.navBtnCurriculum) DOM.navBtnCurriculum.classList.add('active');
     }
+
+    // Sidebar Collapse / Expand Toggle
+    function toggleSidebar(collapse) {
+        if (!DOM.sidebar) return;
+        const isCollapsed = DOM.sidebar.classList.contains('desktop-collapsed');
+        const shouldCollapse = collapse !== undefined ? collapse : !isCollapsed;
+
+        if (shouldCollapse) {
+            DOM.sidebar.classList.add('desktop-collapsed');
+            if (DOM.sidebarExpandBtn) DOM.sidebarExpandBtn.style.display = 'inline-flex';
+        } else {
+            DOM.sidebar.classList.remove('desktop-collapsed');
+            if (DOM.sidebarExpandBtn) DOM.sidebarExpandBtn.style.display = 'none';
+        }
+    }
+
+    if (DOM.sidebarCollapseBtn) DOM.sidebarCollapseBtn.addEventListener('click', () => toggleSidebar(true));
+    if (DOM.sidebarExpandBtn) DOM.sidebarExpandBtn.addEventListener('click', () => toggleSidebar(false));
 
     if (DOM.navBtnHome) DOM.navBtnHome.addEventListener('click', showHomeView);
     if (DOM.brandHomeLink) DOM.brandHomeLink.addEventListener('click', (e) => {

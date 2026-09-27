@@ -141,7 +141,12 @@
             <!-- Left Navigation Sidebar -->
             <aside class="sidebar" id="sidebar">
                 <div class="sidebar-header">
-                    <div class="sidebar-title">Select Language Track</div>
+                    <div class="sidebar-header-top">
+                        <div class="sidebar-title">Select Language Track</div>
+                        <button class="sidebar-collapse-btn" id="sidebar-collapse-btn" title="Hide Sidebar">
+                            <span>◀</span>
+                        </button>
+                    </div>
                     <div class="category-filters">
                         <button class="filter-chip active" id="lang-tab-js">JavaScript (54 Ch)</button>
                         <button class="filter-chip" id="lang-tab-py">Python (10 Ch)</button>
@@ -158,6 +163,9 @@
             <main class="main-content" id="main-content">
                 <!-- Breadcrumb -->
                 <div class="doc-breadcrumb">
+                    <button class="sidebar-expand-btn" id="sidebar-expand-btn" title="Show Sidebar" style="display: none;">
+                        <span>▶</span> Sidebar
+                    </button>
                     <span id="doc-bc-chapter">Ch 1: Introduction</span>
                     <span class="separator">/</span>
                     <span id="doc-bc-lesson">Lesson 1.1</span>
