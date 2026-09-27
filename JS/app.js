@@ -1143,17 +1143,6 @@ console.log("Incremented Count:", count);`
             groupEl.appendChild(lessonsListEl);
             DOM.curriculumTree.appendChild(groupEl);
         });
-
-        updateProgressBar();
-    }
-
-    // Update Progress Indicator
-    function updateProgressBar() {
-        const total = allLessons.length;
-        const count = completedLessons.filter(id => allLessons.some(l => l.id === id)).length;
-        const percent = total > 0 ? Math.round((count / total) * 100) : 0;
-        DOM.progressFill.style.width = `${percent}%`;
-        DOM.progressText.innerText = `${count} / ${total} Lessons (${percent}%)`;
     }
 
     // Select Test Breakline Divider
