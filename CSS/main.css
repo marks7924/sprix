@@ -1170,8 +1170,8 @@ body {
     }
 
     .top-header {
-        padding: 0 16px;
-        gap: 12px;
+        padding: 0 12px;
+        gap: 8px;
         justify-content: space-between;
     }
 
@@ -1182,18 +1182,29 @@ body {
         border-radius: var(--radius-md);
         align-items: center;
         justify-content: center;
+        flex-shrink: 0;
     }
 
     .version-badge {
         display: none;
     }
 
+    .brand-logo {
+        gap: 8px;
+    }
+
     .brand-logo .brand-name {
-        font-size: 1rem;
+        font-size: 0.95rem;
+    }
+
+    .brand-icon {
+        width: 24px;
+        height: 24px;
+        font-size: 0.8rem;
     }
 
     .header-controls {
-        gap: 8px;
+        gap: 6px;
     }
 
     /* Hide bulky desktop search bar on mobile */
@@ -1205,13 +1216,13 @@ body {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 36px;
-        height: 36px;
+        width: 34px;
+        height: 34px;
         background: transparent;
         border: 1px solid var(--border-color);
         color: var(--text-primary);
         border-radius: var(--radius-md);
-        font-size: 1rem;
+        font-size: 0.95rem;
         cursor: pointer;
     }
 
@@ -1225,8 +1236,8 @@ body {
 
     .theme-toggle-btn {
         padding: 0;
-        width: 36px;
-        height: 36px;
+        width: 34px;
+        height: 34px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -1237,6 +1248,26 @@ body {
         display: none;
     }
 
+    /* Home View Container Mobile Adjustments */
+    .home-view-container {
+        padding: 24px 16px 60px;
+    }
+
+    .home-hero-card {
+        padding: 28px 20px;
+        margin-bottom: 24px;
+    }
+
+    .hero-title {
+        font-size: 1.85rem;
+        margin-bottom: 12px;
+    }
+
+    .hero-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 24px;
+    }
+
     /* Mobile Sidebar Drawer */
     .sidebar {
         position: fixed;
@@ -1244,7 +1275,7 @@ body {
         top: var(--header-height);
         height: calc(100vh - var(--header-height));
         width: 85vw;
-        max-width: 300px;
+        max-width: 310px;
         z-index: 200;
         box-shadow: 4px 0 16px rgba(0, 0, 0, 0.4);
         transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1256,11 +1287,16 @@ body {
 
     /* Mobile Main Content View */
     .main-content {
-        padding: 16px 14px 40px;
+        padding: 20px 16px 40px;
+    }
+
+    .doc-breadcrumb {
+        flex-wrap: wrap;
+        gap: 6px;
     }
 
     .doc-title {
-        font-size: 1.4rem;
+        font-size: 1.45rem;
     }
 
     .doc-title-row {
@@ -1281,7 +1317,12 @@ body {
     }
 
     .dev-tools-card {
-        padding: 16px;
+        padding: 16px 14px;
+    }
+
+    .viz-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
     }
 
     .lesson-nav-footer {
@@ -1290,8 +1331,147 @@ body {
         align-items: stretch;
     }
 
+    .nav-link-btn {
+        width: 100%;
+    }
+
     .nav-link-btn.next {
         align-items: flex-start;
+    }
+}
+
+/* Phone Screen Optimizations (< 520px) */
+@media (max-width: 520px) {
+    .main-nav-links {
+        margin-left: 4px;
+        gap: 2px;
+    }
+
+    .nav-view-btn {
+        padding: 5px 8px;
+        font-size: 0.78rem;
+    }
+
+    .home-view-container {
+        padding: 16px 12px 40px;
+    }
+
+    .home-hero-card {
+        padding: 20px 14px;
+        border-radius: var(--radius-md);
+    }
+
+    .hero-title {
+        font-size: 1.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.88rem;
+        margin-bottom: 20px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+    }
+
+    .primary-hero-btn,
+    .secondary-hero-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .home-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .home-feature-card {
+        padding: 18px 14px;
+    }
+
+    .main-content {
+        padding: 14px 12px 40px;
+    }
+
+    .sidebar-expand-btn {
+        padding: 4px 8px;
+        font-size: 0.78rem;
+        margin-right: 6px;
+    }
+
+    .doc-title {
+        font-size: 1.3rem;
+    }
+
+    .mark-completed-btn {
+        width: 100%;
+        justify-content: center;
+        margin-top: 4px;
+    }
+
+    .spec-note-box {
+        padding: 12px 14px;
+        font-size: 0.85rem;
+    }
+
+    .sandbox-textarea {
+        font-size: 0.8rem;
+        padding: 10px;
+        height: 120px;
+    }
+
+    .sandbox-actions {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+
+    .sandbox-actions .btn-primary {
+        width: 100%;
+    }
+
+    .quiz-question-card {
+        padding: 14px 12px !important;
+    }
+
+    .quiz-question-card label {
+        width: 100%;
+        font-size: 0.82rem !important;
+        padding: 8px 10px !important;
+        word-break: break-word;
+    }
+
+    .grade-banner-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .grade-score-pill {
+        align-self: flex-start;
+        font-size: 1.1rem;
+        padding: 4px 12px;
+    }
+}
+
+/* Very Small Phones (< 380px) */
+@media (max-width: 380px) {
+    .brand-name {
+        display: none;
+    }
+
+    .nav-view-btn span {
+        font-size: 0.9rem;
+    }
+
+    .hero-title {
+        font-size: 1.35rem;
+    }
+
+    .doc-title {
+        font-size: 1.2rem;
     }
 }
 
@@ -1538,6 +1718,7 @@ body {
         gap: 10px;
     }
 }
+
 
 
 
