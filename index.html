@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sprix Official Learning Portal - Curriculum & Reference</title>
+    <meta name="description"
+        content="Official technical learning portal for JavaScript (54 Chapters), Python (10 Chapters), HTML, CSS, and interactive assessments.">
+
+    <!-- Professional Typography Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Official Main Stylesheet -->
+    <link rel="stylesheet" href="CSS/main.css">
+</head>
+
+<body>
+
+    <div class="app-container">
+        <!-- Top Navigation Bar -->
+        <header class="top-header">
+            <div class="brand-section">
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle Navigation Menu">
+                    <span>☰</span>
+                </button>
+                <a href="#" class="brand-logo">
+                    <div class="brand-icon">S</div>
+                    <span class="brand-name">Sprix Portal</span>
+                </a>
+                <span class="version-badge">Spec v2.0</span>
+            </div>
+
+            <div class="header-controls">
+                <!-- Desktop Search Bar -->
+                <div class="global-search-container" id="desktop-search-container">
+                    <span class="search-icon-left">🔍</span>
+                    <input type="text" id="global-search" class="global-search-input"
+                        placeholder="Search lessons, concepts..." autocomplete="off">
+                    <span class="shortcut-hint">Ctrl K</span>
+                </div>
+
+                <!-- Mobile Search Toggle Icon Button -->
+                <button class="icon-btn mobile-search-toggle" id="mobile-search-toggle" aria-label="Toggle Search">
+                    <span>🔍</span>
+                </button>
+
+                <!-- Progress Bar Widget -->
+                <div class="progress-widget">
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" id="progress-fill"></div>
+                    </div>
+                    <span id="progress-text">0 / 0 Lessons (0%)</span>
+                </div>
+
+                <!-- Theme Switcher -->
+                <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Theme">
+                    <span id="theme-icon">🌙</span>
+                    <span class="theme-text" id="theme-text">Dark Mode</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Mobile Expandable Search Bar -->
+        <div class="mobile-search-dropdown" id="mobile-search-dropdown">
+            <div class="mobile-search-inner">
+                <span class="search-icon-left">🔍</span>
+                <input type="text" id="mobile-global-search" class="global-search-input" placeholder="Search lessons..."
+                    autocomplete="off">
+                <button class="close-mobile-search" id="close-mobile-search" aria-label="Close Search">✕</button>
+            </div>
+        </div>
+
+        <!-- Mobile Backdrop Overlay -->
+        <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+        <!-- Main Workspace Layout -->
+        <div class="workspace-layout">
+            <!-- Left Navigation Sidebar -->
+            <aside class="sidebar" id="sidebar">
+                <div class="sidebar-header">
+                    <div class="sidebar-title">Select Language Track</div>
+                    <div class="category-filters">
+                        <button class="filter-chip active" id="lang-tab-js">JavaScript (54 Ch)</button>
+                        <button class="filter-chip" id="lang-tab-py">Python (10 Ch)</button>
+                    </div>
+                </div>
+
+                <!-- Hierarchical Chapters & Lessons Tree -->
+                <div class="curriculum-tree" id="curriculum-tree">
+                    <!-- Populated dynamically via JS -->
+                </div>
+            </aside>
+
+            <!-- Main Documentation Content Panel -->
+            <main class="main-content" id="main-content">
+                <!-- Breadcrumb -->
+                <div class="doc-breadcrumb">
+                    <span id="doc-bc-chapter">Ch 1: Introduction</span>
+                    <span class="separator">/</span>
+                    <span id="doc-bc-lesson">Lesson 1.1</span>
+                </div>
+
+                <!-- Document Header -->
+                <div class="doc-header">
+                    <div class="doc-title-row">
+                        <h1 class="doc-title" id="doc-title">What is Programming</h1>
+                        <span class="tech-tag js" id="tech-tag">JS</span>
+                    </div>
+
+                    <div class="doc-meta">
+                        <span>⏱️ <span id="read-time">3 min read</span></span>
+                        <span>📋 <span id="spec-name">Core Principles</span></span>
+
+                        <button class="mark-completed-btn" id="mark-completed-btn">
+                            <span>○</span> Mark as Completed
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Main Lesson Section -->
+                <div class="doc-section">
+                    <h2 class="section-h2">Explanation & Concepts</h2>
+                    <p class="doc-description" id="doc-description">
+                        Loading lesson content...
+                    </p>
+
+                    <div class="spec-note-box">
+                        <strong>Developer Specification:</strong> <span id="spec-note-text">Detailed
+                            specifications...</span>
+                    </div>
+
+                    <!-- Code Snippet Card -->
+                    <div class="code-block-wrapper">
+                        <div class="code-header">
+                            <span class="code-lang-label" id="code-lang-label">JavaScript</span>
+                            <div class="code-actions">
+                                <button class="code-btn" id="copy-code-btn">
+                                    <span>📋</span> Copy Code
+                                </button>
+                            </div>
+                        </div>
+                        <pre class="code-display" id="code-display"></pre>
+                    </div>
+
+                    <!-- Quiz Assessment Container (Shown on Test Chapters) -->
+                    <div class="dev-tools-card" id="quiz-container-card" style="display: none;">
+                        <div class="tools-card-title">
+                            <span>📝</span> Chapter Knowledge Assessment
+                        </div>
+                        <div class="tools-card-subtitle">
+                            Answer the questions below to test your understanding of this chapter's topics.
+                        </div>
+                        <div id="quiz-body"></div>
+                    </div>
+                </div>
+
+                <!-- Interactive JavaScript Sandbox -->
+                <div class="dev-tools-card" id="js-tools-card">
+                    <div class="tools-card-title">
+                        <span>⚡</span> Interactive Code Sandbox
+                    </div>
+                    <div class="tools-card-subtitle">
+                        Execute JavaScript statements in real-time and inspect output logs.
+                    </div>
+                    <textarea class="sandbox-textarea" id="js-sandbox-input" spellcheck="false">// Try running your code here!
+let y = 2;
+if (y > 1) {
+    console.log("y is greater than 1");
+}</textarea>
+
+                    <div class="sandbox-actions">
+                        <button class="btn-primary" id="run-js-btn">Run Script</button>
+                        <span style="font-size: 0.8rem; color: var(--text-secondary);">Execution Console:</span>
+                    </div>
+
+                    <div class="sandbox-output-console" id="js-console-output">
+                        <div class="console-entry output">&gt; Console initialized. Click "Run Script" to execute.</div>
+                    </div>
+                </div>
+
+                <!-- Lesson Navigation Footer -->
+                <div class="lesson-nav-footer">
+                    <button class="nav-link-btn" id="prev-lesson-btn" style="visibility: hidden;">
+                        <span class="nav-link-sub">← Previous Lesson</span>
+                        <span class="nav-link-title" id="prev-lesson-title">Lesson Title</span>
+                    </button>
+
+                    <button class="nav-link-btn next" id="next-lesson-btn">
+                        <span class="nav-link-sub">Next Lesson →</span>
+                        <span class="nav-link-title" id="next-lesson-title">Lesson Title</span>
+                    </button>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Main Engine Application Script -->
+    <script src="JS/app.js"></script>
+</body>
+
+</html>

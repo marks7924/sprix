@@ -1,0 +1,55 @@
+/* ==========================================================================
+   CSS LEARNING NOTES & OFFICIAL REFERENCE GUIDE
+   CHAPTER 2: CSS STYLING & VISUAL LAYOUTS
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   LESSON 2.1: LINKING CSS TO HTML
+   --------------------------------------------------------------------------
+   Connect external stylesheets to HTML files inside the <head> element.
+   
+   Example:
+   <head>
+     <link rel="stylesheet" href="CSS/Learned.css">
+   </head>
+*/
+
+/* --------------------------------------------------------------------------
+   LESSON 2.2: CLASSES VS IDS (TARGET SPECIFICITY)
+   --------------------------------------------------------------------------
+   - Classes (.classname): Target multiple elements sharing a class name.
+   - IDs (#idname): Target single unique element per page.
+*/
+.example-classname {
+  background-color: #1e293b;
+  color: #f8fafc;
+}
+
+#example-idname {
+  color: #2563eb;
+}
+
+/* --------------------------------------------------------------------------
+   LESSON 2.3: COLOR SYSTEMS & OPACITY (HEX, RGB, RGBA)
+   --------------------------------------------------------------------------
+   - Name: red, blue, white
+   - Hex: #ff0000, #2563eb
+   - RGB: rgb(255, 0, 0)
+   - RGBA: rgba(255, 0, 0, 0.5) (Includes alpha channel for transparency)
+*/
+h1 {
+  color: #f8fafc;
+  background-color: #111827;
+}
+
+/* --------------------------------------------------------------------------
+   LESSON 2.4: TYPOGRAPHY SCALE & WEIGHT SYSTEMS
+   --------------------------------------------------------------------------
+   - font-size: Adjust text sizing in pixels (px), rem, or em.
+   - font-weight: Adjust boldness metrics (100-900). 400 is normal; 700 is bold.
+*/
+p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+}
