@@ -51,28 +51,56 @@
                     <input type="text" id="global-search" class="global-search-input"
                         placeholder="Search lessons, concepts..." autocomplete="off">
                     <span class="shortcut-hint">Ctrl K</span>
+                    <div class="search-results-dropdown" id="desktop-search-results"></div>
                 </div>
 
-                <!-- Mobile Search Toggle Icon Button -->
-                <button class="icon-btn mobile-search-toggle" id="mobile-search-toggle" aria-label="Toggle Search">
-                    <span>🔍</span>
+                <!-- Language Switcher (Desktop) -->
+                <button class="theme-toggle-btn" id="lang-toggle" aria-label="Toggle Language">
+                    <span>🌐</span>
+                    <span class="theme-text" id="lang-text">العربية</span>
                 </button>
 
-                <!-- Theme Switcher -->
+                <!-- Theme Switcher (Desktop) -->
                 <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Theme">
                     <span id="theme-icon">🌙</span>
                     <span class="theme-text" id="theme-text">Dark Mode</span>
                 </button>
+
+                <!-- Unified Mobile Settings Button -->
+                <button class="mobile-settings-toggle-btn" id="mobile-settings-toggle" aria-label="Toggle Settings">
+                    <span>⚙️</span>
+                </button>
             </div>
         </header>
 
-        <!-- Mobile Expandable Search Bar -->
-        <div class="mobile-search-dropdown" id="mobile-search-dropdown">
-            <div class="mobile-search-inner">
-                <span class="search-icon-left">🔍</span>
-                <input type="text" id="mobile-global-search" class="global-search-input" placeholder="Search lessons..."
-                    autocomplete="off">
-                <button class="close-mobile-search" id="close-mobile-search" aria-label="Close Search">✕</button>
+        <!-- Unified Mobile Quick Settings & Search Dropdown Modal -->
+        <div class="mobile-settings-dropdown" id="mobile-settings-dropdown">
+            <div class="settings-dropdown-header">
+                <span class="settings-title">⚙️ <span id="mobile-settings-title-text">Quick Settings</span></span>
+                <button class="close-mobile-settings" id="close-mobile-settings" aria-label="Close Settings">✕</button>
+            </div>
+
+            <!-- Mobile Search Bar -->
+            <div class="settings-group">
+                <label class="settings-label" id="mobile-search-label">Search Lessons</label>
+                <div class="mobile-search-inner">
+                    <span class="search-icon-left">🔍</span>
+                    <input type="text" id="mobile-global-search" class="global-search-input" placeholder="Search lessons..." autocomplete="off">
+                    <div class="search-results-dropdown" id="mobile-search-results"></div>
+                </div>
+            </div>
+
+            <!-- Language & Theme Switches Grid -->
+            <div class="settings-actions-grid">
+                <button class="mobile-setting-item-btn" id="mobile-lang-toggle">
+                    <span>🌐</span>
+                    <span id="mobile-lang-text">العربية</span>
+                </button>
+
+                <button class="mobile-setting-item-btn" id="mobile-theme-toggle">
+                    <span id="mobile-theme-icon">🌙</span>
+                    <span id="mobile-theme-text">Dark Mode</span>
+                </button>
             </div>
         </div>
 
@@ -83,19 +111,19 @@
         <div class="home-view-container" id="home-view-container">
             <!-- Hero Banner -->
             <div class="home-hero-card">
-                <h1 class="hero-title">Sprix Portal Curriculum</h1>
-                <p class="hero-subtitle">
+                <h1 class="hero-title" id="home-hero-title">Sprix Portal Curriculum</h1>
+                <p class="hero-subtitle" id="home-hero-subtitle">
                     A clean, editorial technical curriculum designed for mastering modern JavaScript and Python programming through structured lessons, real-time code execution, and interactive assessments.
                 </p>
                 <div class="hero-actions">
                     <button class="primary-hero-btn" id="enter-curriculum-btn">
-                        <span>🚀</span> Enter Curriculum →
+                        <span>🚀</span> <span id="enter-curriculum-text">Enter Curriculum →</span>
                     </button>
                     <button class="secondary-hero-btn" id="hero-js-track-btn">
-                        <span>⚡</span> JavaScript (54 Ch)
+                        <span>⚡</span> <span id="hero-js-text">JavaScript (54 Ch)</span>
                     </button>
                     <button class="secondary-hero-btn" id="hero-py-track-btn">
-                        <span>🐍</span> Python (10 Ch)
+                        <span>🐍</span> <span id="hero-py-text">Python (10 Ch)</span>
                     </button>
                 </div>
             </div>
@@ -104,32 +132,32 @@
             <div class="home-grid">
                 <div class="home-feature-card">
                     <div class="feature-icon">📘</div>
-                    <h3 class="feature-title">Structured Curriculum</h3>
-                    <p class="feature-desc">
+                    <h3 class="feature-title" id="feat1-title">Structured Curriculum</h3>
+                    <p class="feature-desc" id="feat1-desc">
                         Explore 54 chapters for JavaScript and 10 chapters for Python. Lessons cover core concepts, syntax, conditionals, loops, functions, and data structures.
                     </p>
                 </div>
 
                 <div class="home-feature-card">
                     <div class="feature-icon">📝</div>
-                    <h3 class="feature-title">Interactive Assessments</h3>
-                    <p class="feature-desc">
+                    <h3 class="feature-title" id="feat2-title">Interactive Assessments</h3>
+                    <p class="feature-desc" id="feat2-desc">
                         Verify your understanding with multiple-choice quizzes and code-answering editors equipped with automated validation and complete solution breakdowns.
                     </p>
                 </div>
 
                 <div class="home-feature-card">
                     <div class="feature-icon">⚡</div>
-                    <h3 class="feature-title">Real-Time Sandbox</h3>
-                    <p class="feature-desc">
+                    <h3 class="feature-title" id="feat3-title">Real-Time Sandbox</h3>
+                    <p class="feature-desc" id="feat3-desc">
                         Write and execute JavaScript statements live within an integrated browser console to inspect logs, outputs, and return values instantly.
                     </p>
                 </div>
 
                 <div class="home-feature-card">
                     <div class="feature-icon">📱</div>
-                    <h3 class="feature-title">Editorial & Responsive</h3>
-                    <p class="feature-desc">
+                    <h3 class="feature-title" id="feat4-title">Editorial & Responsive</h3>
+                    <p class="feature-desc" id="feat4-desc">
                         Built with crisp editorial typography, dark/light theme switching, 100% phone responsiveness, and drawer navigation with zero neon/AI glow.
                     </p>
                 </div>
@@ -142,7 +170,7 @@
             <aside class="sidebar" id="sidebar">
                 <div class="sidebar-header">
                     <div class="sidebar-header-top">
-                        <div class="sidebar-title">Select Language Track</div>
+                        <div class="sidebar-title" id="sidebar-select-title">Select Language Track</div>
                         <button class="sidebar-collapse-btn" id="sidebar-collapse-btn" title="Hide Sidebar">
                             <span>◀</span>
                         </button>
@@ -164,7 +192,7 @@
                 <!-- Breadcrumb -->
                 <div class="doc-breadcrumb">
                     <button class="sidebar-expand-btn" id="sidebar-expand-btn" title="Show Sidebar" style="display: none;">
-                        <span>▶</span> Sidebar
+                        <span>▶</span> <span id="sidebar-expand-text">Sidebar</span>
                     </button>
                     <span id="doc-bc-chapter">Ch 1: Introduction</span>
                     <span class="separator">/</span>
@@ -183,20 +211,20 @@
                         <span>📋 <span id="spec-name">Core Principles</span></span>
 
                         <button class="mark-completed-btn" id="mark-completed-btn">
-                            <span>○</span> Mark as Completed
+                            <span>○</span> <span id="mark-completed-text">Mark as Completed</span>
                         </button>
                     </div>
                 </div>
 
                 <!-- Main Lesson Section -->
                 <div class="doc-section">
-                    <h2 class="section-h2">Explanation & Concepts</h2>
+                    <h2 class="section-h2" id="doc-section-h2">Explanation & Concepts</h2>
                     <p class="doc-description" id="doc-description">
                         Loading lesson content...
                     </p>
 
                     <div class="spec-note-box">
-                        <strong>Developer Specification:</strong> <span id="spec-note-text">Detailed
+                        <strong id="spec-note-label">Developer Specification:</strong> <span id="spec-note-text">Detailed
                             specifications...</span>
                     </div>
 
@@ -206,7 +234,7 @@
                             <span class="code-lang-label" id="code-lang-label">JavaScript</span>
                             <div class="code-actions">
                                 <button class="code-btn" id="copy-code-btn">
-                                    <span>📋</span> Copy Code
+                                    <span>📋</span> <span id="copy-code-text">Copy Code</span>
                                 </button>
                             </div>
                         </div>
@@ -216,9 +244,9 @@
                     <!-- Quiz Assessment Container (Shown on Test Chapters) -->
                     <div class="dev-tools-card" id="quiz-container-card" style="display: none;">
                         <div class="tools-card-title">
-                            <span>📝</span> Chapter Knowledge Assessment
+                            <span>📝</span> <span id="quiz-card-title">Chapter Knowledge Assessment</span>
                         </div>
-                        <div class="tools-card-subtitle">
+                        <div class="tools-card-subtitle" id="quiz-card-subtitle">
                             Answer the questions below to test your understanding of this chapter's topics.
                         </div>
                         <div id="quiz-body"></div>
@@ -228,9 +256,9 @@
                 <!-- Interactive JavaScript Sandbox -->
                 <div class="dev-tools-card" id="js-tools-card">
                     <div class="tools-card-title">
-                        <span>⚡</span> Interactive Code Sandbox
+                        <span>⚡</span> <span id="sandbox-card-title">Interactive Code Sandbox</span>
                     </div>
-                    <div class="tools-card-subtitle">
+                    <div class="tools-card-subtitle" id="sandbox-card-subtitle">
                         Execute JavaScript statements in real-time and inspect output logs.
                     </div>
                     <textarea class="sandbox-textarea" id="js-sandbox-input" spellcheck="false">// Try running your code here!
@@ -241,11 +269,11 @@ if (y > 1) {
 
                     <div class="sandbox-actions">
                         <button class="btn-primary" id="run-js-btn">Run Script</button>
-                        <span style="font-size: 0.8rem; color: var(--text-secondary);">Execution Console:</span>
+                        <span style="font-size: 0.8rem; color: var(--text-secondary);" id="exec-console-label">Execution Console:</span>
                     </div>
 
                     <div class="sandbox-output-console" id="js-console-output">
-                        <div class="console-entry output">&gt; Console initialized. Click "Run Script" to execute.</div>
+                        <div class="console-entry output" id="console-init-entry">&gt; Console initialized. Click "Run Script" to execute.</div>
                     </div>
                 </div>
 

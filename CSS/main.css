@@ -1106,11 +1106,18 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.65);
-    backdrop-filter: blur(4px);
+    background-color: rgba(0, 0, 0, 0.4);
     z-index: 150;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.25s ease;
+}
+
+@media (min-width: 769px) {
+    .sidebar-overlay,
+    .sidebar-overlay.active {
+        display: none !important;
+        pointer-events: none !important;
+    }
 }
 
 .sidebar-overlay.active {
@@ -1118,27 +1125,200 @@ body {
     opacity: 1;
 }
 
-/* Mobile Search Dropdown */
-.mobile-search-toggle {
-    display: none;
+/* Live Instant Search Results Dropdown */
+.global-search-container {
+    position: relative;
 }
 
-.mobile-search-dropdown {
+.mobile-search-inner {
+    position: relative;
+}
+
+.search-results-dropdown {
     display: none;
-    position: fixed;
-    top: var(--header-height);
+    position: absolute;
+    top: calc(100% + 6px);
     left: 0;
     right: 0;
     background-color: var(--bg-sidebar);
-    border-bottom: 1px solid var(--border-color);
-    padding: 10px 16px;
-    z-index: 100;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.4);
+    max-height: 380px;
+    overflow-y: auto;
+    z-index: 1000;
+    padding: 6px;
 }
 
-.mobile-search-dropdown.active {
+html[dir="rtl"] .search-results-dropdown {
+    left: 0;
+    right: 0;
+}
+
+.search-results-dropdown.active {
     display: block;
-    animation: slideDownSearch 0.2s ease forwards;
+}
+
+.search-result-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+    text-decoration: none;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.search-result-item:last-child {
+    border-bottom: none;
+}
+
+.search-result-item:hover {
+    background-color: var(--bg-surface-hover);
+}
+
+.search-result-badge {
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    flex-shrink: 0;
+}
+
+.search-result-badge.js {
+    background-color: rgba(247, 223, 30, 0.15);
+    color: #eab308;
+    border: 1px solid rgba(247, 223, 30, 0.3);
+}
+
+.search-result-badge.python {
+    background-color: rgba(59, 130, 246, 0.15);
+    color: #3b82f6;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.search-result-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    overflow: hidden;
+    flex: 1;
+}
+
+.search-result-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.search-result-meta {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.search-no-results {
+    padding: 14px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* Unified Mobile Settings Button & Modal Styles */
+.mobile-settings-toggle-btn {
+    display: none;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-md);
+    font-size: 1.05rem;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.mobile-settings-toggle-btn:hover {
+    background-color: var(--bg-surface-hover);
+    border-color: var(--accent-primary);
+}
+
+.mobile-settings-dropdown {
+    display: none;
+    position: fixed;
+    top: calc(var(--header-height) + 6px);
+    right: 12px;
+    width: calc(100vw - 24px);
+    max-width: 340px;
+    background-color: var(--bg-sidebar);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 16px;
+    z-index: 250;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+}
+
+html[dir="rtl"] .mobile-settings-dropdown {
+    right: auto;
+    left: 12px;
+}
+
+.mobile-settings-dropdown.active {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    animation: slideDownSettings 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.settings-dropdown-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.settings-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.close-mobile-settings {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 4px;
+    transition: color 0.15s;
+}
+
+.close-mobile-settings:hover {
+    color: var(--text-primary);
+}
+
+.settings-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.settings-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
 }
 
 .mobile-search-inner {
@@ -1147,20 +1327,43 @@ body {
     align-items: center;
 }
 
-.close-mobile-search {
-    position: absolute;
-    right: 10px;
-    background: transparent;
-    border: none;
-    color: var(--text-muted);
-    font-size: 1.1rem;
-    cursor: pointer;
-    padding: 4px;
+.settings-actions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
 }
 
-@keyframes slideDownSearch {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
+.mobile-setting-item-btn {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 10px 12px;
+    border-radius: var(--radius-md);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.mobile-setting-item-btn:hover {
+    background-color: var(--bg-surface-hover);
+    border-color: var(--accent-primary);
+}
+
+@keyframes slideDownSettings {
+    from {
+        opacity: 0;
+        transform: translateY(-8px) scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
 /* Comprehensive Mobile Responsiveness Breakpoints */
@@ -1207,23 +1410,16 @@ body {
         gap: 6px;
     }
 
-    /* Hide bulky desktop search bar on mobile */
-    #desktop-search-container {
-        display: none;
+    /* Hide desktop controls on mobile */
+    #desktop-search-container,
+    #lang-toggle,
+    #theme-toggle {
+        display: none !important;
     }
 
-    .mobile-search-toggle {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 34px;
-        height: 34px;
-        background: transparent;
-        border: 1px solid var(--border-color);
-        color: var(--text-primary);
-        border-radius: var(--radius-md);
-        font-size: 0.95rem;
-        cursor: pointer;
+    /* Show single unified settings button on mobile */
+    .mobile-settings-toggle-btn {
+        display: flex !important;
     }
 
     .shortcut-hint {
@@ -1718,6 +1914,127 @@ body {
         gap: 10px;
     }
 }
+
+/* ==========================================================================
+   ARABIC RTL (RIGHT-TO-LEFT) DESIGN SYSTEM STYLES
+   ========================================================================== */
+
+html[dir="rtl"],
+body.rtl {
+    direction: rtl;
+    text-align: right;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Retain LTR direction for Monospace & Programming Code Blocks */
+html[dir="rtl"] pre,
+html[dir="rtl"] code,
+html[dir="rtl"] .code-display,
+html[dir="rtl"] .sandbox-textarea,
+html[dir="rtl"] .sandbox-output-console,
+html[dir="rtl"] .quiz-code-input,
+html[dir="rtl"] .shortcut-hint {
+    direction: ltr !important;
+    text-align: left !important;
+}
+
+/* RTL Navigation & Header Alignment */
+html[dir="rtl"] .main-nav-links {
+    margin-left: 0;
+    margin-right: 16px;
+}
+
+html[dir="rtl"] .search-icon-left {
+    left: auto;
+    right: 12px;
+}
+
+html[dir="rtl"] .global-search-input {
+    padding: 8px 36px 8px 12px;
+}
+
+html[dir="rtl"] .close-mobile-search {
+    right: auto;
+    left: 10px;
+}
+
+html[dir="rtl"] .sidebar-expand-btn {
+    margin-right: 0;
+    margin-left: 12px;
+}
+
+html[dir="rtl"] .sidebar {
+    border-right: none;
+    border-left: 1px solid var(--border-color);
+}
+
+html[dir="rtl"] .chapter-number {
+    margin-right: 0;
+    margin-left: 8px;
+}
+
+html[dir="rtl"] .chapter-title-btn {
+    text-align: right;
+}
+
+html[dir="rtl"] .chapter-lessons-list {
+    padding-left: 0;
+    padding-right: 12px;
+}
+
+html[dir="rtl"] .lesson-item-btn {
+    text-align: right;
+}
+
+html[dir="rtl"] .locked-badge {
+    margin-left: 0;
+    margin-right: 6px;
+}
+
+html[dir="rtl"] .spec-note-box {
+    border-left: none;
+    border-right: 4px solid var(--accent-primary);
+    border-radius: var(--radius-md) 0 0 var(--radius-md);
+}
+
+html[dir="rtl"] .toast-notice {
+    border-left: 1px solid var(--border-color);
+    border-right: 4px solid var(--accent-primary);
+}
+
+html[dir="rtl"] .test-grade-banner.passed {
+    border-left: 1px solid var(--border-color);
+    border-right: 5px solid var(--success-color);
+}
+
+html[dir="rtl"] .test-grade-banner.failed {
+    border-left: 1px solid var(--border-color);
+    border-right: 5px solid var(--html-color);
+}
+
+html[dir="rtl"] .nav-link-btn.next {
+    align-items: flex-start;
+}
+
+/* Mobile Sidebar RTL Position */
+@media (max-width: 768px) {
+    html[dir="rtl"] .sidebar {
+        left: auto;
+        right: -100%;
+        transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: -4px 0 16px rgba(0, 0, 0, 0.4);
+    }
+
+    html[dir="rtl"] .sidebar.mobile-open {
+        right: 0;
+        left: auto;
+    }
+
+    html[dir="rtl"] .main-nav-links {
+        margin-right: 4px;
+    }
+}
+
 
 
 
