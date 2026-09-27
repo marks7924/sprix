@@ -28,11 +28,20 @@
                 <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle Navigation Menu">
                     <span>☰</span>
                 </button>
-                <a href="#" class="brand-logo">
+                <a href="#" class="brand-logo" id="brand-home-link">
                     <div class="brand-icon">S</div>
                     <span class="brand-name">Sprix Portal</span>
                 </a>
                 <span class="version-badge">Spec v2.0</span>
+
+                <nav class="main-nav-links">
+                    <button class="nav-view-btn active" id="nav-btn-home">
+                        <span>🏠</span> Home
+                    </button>
+                    <button class="nav-view-btn" id="nav-btn-curriculum">
+                        <span>📚</span> Curriculum
+                    </button>
+                </nav>
             </div>
 
             <div class="header-controls">
@@ -48,14 +57,6 @@
                 <button class="icon-btn mobile-search-toggle" id="mobile-search-toggle" aria-label="Toggle Search">
                     <span>🔍</span>
                 </button>
-
-                <!-- Progress Bar Widget -->
-                <div class="progress-widget">
-                    <div class="progress-bar-bg">
-                        <div class="progress-bar-fill" id="progress-fill"></div>
-                    </div>
-                    <span id="progress-text">0 / 0 Lessons (0%)</span>
-                </div>
 
                 <!-- Theme Switcher -->
                 <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Theme">
@@ -78,8 +79,68 @@
         <!-- Mobile Backdrop Overlay -->
         <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
-        <!-- Main Workspace Layout -->
-        <div class="workspace-layout">
+        <!-- Home Page View Container (Default Active View) -->
+        <div class="home-view-container" id="home-view-container">
+            <!-- Hero Banner -->
+            <div class="home-hero-card">
+                <div class="hero-badge">
+                    <span>⚡</span> Official Learning Platform
+                </div>
+                <h1 class="hero-title">Sprix Portal Curriculum</h1>
+                <p class="hero-subtitle">
+                    A clean, editorial technical curriculum designed for mastering modern JavaScript and Python programming through structured lessons, real-time code execution, and interactive assessments.
+                </p>
+                <div class="hero-actions">
+                    <button class="primary-hero-btn" id="enter-curriculum-btn">
+                        <span>🚀</span> Enter Curriculum →
+                    </button>
+                    <button class="secondary-hero-btn" id="hero-js-track-btn">
+                        <span>⚡</span> JavaScript (54 Ch)
+                    </button>
+                    <button class="secondary-hero-btn" id="hero-py-track-btn">
+                        <span>🐍</span> Python (10 Ch)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Features Grid -->
+            <div class="home-grid">
+                <div class="home-feature-card">
+                    <div class="feature-icon">📘</div>
+                    <h3 class="feature-title">Structured Curriculum</h3>
+                    <p class="feature-desc">
+                        Explore 54 chapters for JavaScript and 10 chapters for Python. Lessons cover core concepts, syntax, conditionals, loops, functions, and data structures.
+                    </p>
+                </div>
+
+                <div class="home-feature-card">
+                    <div class="feature-icon">📝</div>
+                    <h3 class="feature-title">Interactive Assessments</h3>
+                    <p class="feature-desc">
+                        Verify your understanding with multiple-choice quizzes and code-answering editors equipped with automated validation and complete solution breakdowns.
+                    </p>
+                </div>
+
+                <div class="home-feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3 class="feature-title">Real-Time Sandbox</h3>
+                    <p class="feature-desc">
+                        Write and execute JavaScript statements live within an integrated browser console to inspect logs, outputs, and return values instantly.
+                    </p>
+                </div>
+
+                <div class="home-feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3 class="feature-title">Editorial & Responsive</h3>
+                    <p class="feature-desc">
+                        Built with crisp editorial typography, dark/light theme switching, 100% phone responsiveness, and drawer navigation with zero neon/AI glow.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Workspace Layout (Hidden on Home View) -->
+        <div class="workspace-layout" id="workspace-layout" style="display: none;">
             <!-- Left Navigation Sidebar -->
             <aside class="sidebar" id="sidebar">
                 <div class="sidebar-header">

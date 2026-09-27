@@ -931,6 +931,16 @@ console.log("Incremented Count:", count);`
         runJsBtn: document.getElementById('run-js-btn'),
         jsConsoleOutput: document.getElementById('js-console-output'),
 
+        // View Switching Elements
+        homeViewContainer: document.getElementById('home-view-container'),
+        workspaceLayout: document.getElementById('workspace-layout'),
+        navBtnHome: document.getElementById('nav-btn-home'),
+        navBtnCurriculum: document.getElementById('nav-btn-curriculum'),
+        brandHomeLink: document.getElementById('brand-home-link'),
+        enterCurriculumBtn: document.getElementById('enter-curriculum-btn'),
+        heroJsTrackBtn: document.getElementById('hero-js-track-btn'),
+        heroPyTrackBtn: document.getElementById('hero-py-track-btn'),
+
         // Mobile Responsiveness Controls
         mobileMenuToggle: document.getElementById('mobile-menu-toggle'),
         sidebarOverlay: document.getElementById('sidebar-overlay'),
@@ -1696,9 +1706,49 @@ console.log("Incremented Count:", count);`
             .replace(/'/g, '&#039;');
     }
 
+    // View Switching Functions
+    function showHomeView() {
+        if (DOM.homeViewContainer) DOM.homeViewContainer.style.display = 'block';
+        if (DOM.workspaceLayout) DOM.workspaceLayout.style.display = 'none';
+        if (DOM.navBtnHome) DOM.navBtnHome.classList.add('active');
+        if (DOM.navBtnCurriculum) DOM.navBtnCurriculum.classList.remove('active');
+    }
+
+    function showCurriculumView(track) {
+        if (track && (track === 'javascript' || track === 'python')) {
+            currentLanguage = track;
+            if (track === 'javascript') {
+                if (DOM.langTabJs) DOM.langTabJs.classList.add('active');
+                if (DOM.langTabPy) DOM.langTabPy.classList.remove('active');
+            } else {
+                if (DOM.langTabPy) DOM.langTabPy.classList.add('active');
+                if (DOM.langTabJs) DOM.langTabJs.classList.remove('active');
+            }
+            chapterCollapsedState = {};
+            updateFlattenedLessons();
+            renderCurriculumTree();
+        }
+
+        if (DOM.homeViewContainer) DOM.homeViewContainer.style.display = 'none';
+        if (DOM.workspaceLayout) DOM.workspaceLayout.style.display = 'flex';
+        if (DOM.navBtnHome) DOM.navBtnHome.classList.remove('active');
+        if (DOM.navBtnCurriculum) DOM.navBtnCurriculum.classList.add('active');
+    }
+
+    if (DOM.navBtnHome) DOM.navBtnHome.addEventListener('click', showHomeView);
+    if (DOM.brandHomeLink) DOM.brandHomeLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        showHomeView();
+    });
+    if (DOM.navBtnCurriculum) DOM.navBtnCurriculum.addEventListener('click', () => showCurriculumView());
+    if (DOM.enterCurriculumBtn) DOM.enterCurriculumBtn.addEventListener('click', () => showCurriculumView('javascript'));
+    if (DOM.heroJsTrackBtn) DOM.heroJsTrackBtn.addEventListener('click', () => showCurriculumView('javascript'));
+    if (DOM.heroPyTrackBtn) DOM.heroPyTrackBtn.addEventListener('click', () => showCurriculumView('python'));
+
     // Init Application
     updateFlattenedLessons();
     renderCurriculumTree();
     selectLesson(0);
+    showHomeView();
 
 })();
