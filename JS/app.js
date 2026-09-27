@@ -2331,7 +2331,7 @@ console.log("Incremented Count:", count);`
         if (DOM.navBtnCurriculum) DOM.navBtnCurriculum.classList.add('active');
     }
 
-    // Sidebar Collapse / Expand Toggle
+    // Sidebar Collapse / Expand Toggle (Desktop/Laptop Only)
     function toggleSidebar(collapse) {
         if (!DOM.sidebar) return;
         const isCollapsed = DOM.sidebar.classList.contains('desktop-collapsed');
@@ -2339,7 +2339,9 @@ console.log("Incremented Count:", count);`
 
         if (shouldCollapse) {
             DOM.sidebar.classList.add('desktop-collapsed');
-            if (DOM.sidebarExpandBtn) DOM.sidebarExpandBtn.style.display = 'inline-flex';
+            if (DOM.sidebarExpandBtn && window.innerWidth > 768) {
+                DOM.sidebarExpandBtn.style.display = 'inline-flex';
+            }
         } else {
             DOM.sidebar.classList.remove('desktop-collapsed');
             if (DOM.sidebarExpandBtn) DOM.sidebarExpandBtn.style.display = 'none';

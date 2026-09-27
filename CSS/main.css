@@ -1592,9 +1592,7 @@ html[dir="rtl"] .mobile-settings-dropdown {
     }
 
     .sidebar-expand-btn {
-        padding: 4px 8px;
-        font-size: 0.78rem;
-        margin-right: 6px;
+        display: none !important;
     }
 
     .doc-title {
