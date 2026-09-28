@@ -2304,17 +2304,15 @@ html[dir="rtl"] .nav-link-btn.next {
 
 /* ─── Site Footer ─────────────────────────────────────────── */
 .site-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    display: block;
+    width: 100%;
     text-align: center;
-    padding: 6px 0;
+    padding: 18px 0 12px;
     font-size: 0.72rem;
     color: var(--text-muted);
     opacity: 0.35;
     pointer-events: none;
-    z-index: 10;
     letter-spacing: 0.06em;
     user-select: none;
+    margin-top: auto;
 }
