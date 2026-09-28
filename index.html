@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sprix Official Learning Portal - Curriculum & Reference</title>
+    <title>Sprix Learning Portal - Curriculum & Reference</title>
     <meta name="description"
-        content="Official technical learning portal for JavaScript (54 Chapters), Python (10 Chapters), HTML, CSS, and interactive assessments.">
+        content="technical learning portal for JavaScript (54 Chapters), Python (10 Chapters), HTML, CSS, and interactive assessments.">
 
     <!-- Professional Typography Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,10 +36,13 @@
 
                 <nav class="main-nav-links">
                     <button class="nav-view-btn active" id="nav-btn-home">
-                        <span>🏠</span> Home
+                        <span>🏠</span><span id="nav-home-text"> Home</span>
                     </button>
                     <button class="nav-view-btn" id="nav-btn-curriculum">
-                        <span>📚</span> Curriculum
+                        <span>📚</span><span id="nav-curriculum-text"> Curriculum</span>
+                    </button>
+                    <button class="nav-view-btn" id="nav-btn-sandbox">
+                        <span>⚡</span><span id="nav-sandbox-text"> Sandbox</span>
                     </button>
                 </nav>
             </div>
@@ -85,7 +88,8 @@
                 <label class="settings-label" id="mobile-search-label">Search Lessons</label>
                 <div class="mobile-search-inner">
                     <span class="search-icon-left">🔍</span>
-                    <input type="text" id="mobile-global-search" class="global-search-input" placeholder="Search lessons..." autocomplete="off">
+                    <input type="text" id="mobile-global-search" class="global-search-input"
+                        placeholder="Search lessons..." autocomplete="off">
                     <div class="search-results-dropdown" id="mobile-search-results"></div>
                 </div>
             </div>
@@ -102,6 +106,15 @@
                     <span id="mobile-theme-text">Dark Mode</span>
                 </button>
             </div>
+
+            <!-- Quick Nav to Sandbox -->
+            <div class="settings-group">
+                <label class="settings-label" id="mobile-sandbox-nav-label">Quick Access</label>
+                <button class="mobile-sandbox-nav-btn" id="mobile-nav-sandbox-btn">
+                    <span>⚡</span>
+                    <span id="mobile-sandbox-nav-text">Open Interactive Sandbox</span>
+                </button>
+            </div>
         </div>
 
         <!-- Mobile Backdrop Overlay -->
@@ -113,7 +126,8 @@
             <div class="home-hero-card">
                 <h1 class="hero-title" id="home-hero-title">Sprix Portal Curriculum</h1>
                 <p class="hero-subtitle" id="home-hero-subtitle">
-                    A clean, editorial technical curriculum designed for mastering modern JavaScript and Python programming through structured lessons, real-time code execution, and interactive assessments.
+                    A clean, editorial technical curriculum designed for mastering modern JavaScript and Python
+                    programming through structured lessons, real-time code execution, and interactive assessments.
                 </p>
                 <div class="hero-actions">
                     <button class="primary-hero-btn" id="enter-curriculum-btn">
@@ -125,6 +139,9 @@
                     <button class="secondary-hero-btn" id="hero-py-track-btn">
                         <span>🐍</span> <span id="hero-py-text">Python (10 Ch)</span>
                     </button>
+                    <button class="secondary-hero-btn hero-sandbox-btn" id="hero-sandbox-btn">
+                        <span>🧪</span> <span id="hero-sandbox-text">Try Sandbox</span>
+                    </button>
                 </div>
             </div>
 
@@ -134,7 +151,8 @@
                     <div class="feature-icon">📘</div>
                     <h3 class="feature-title" id="feat1-title">Structured Curriculum</h3>
                     <p class="feature-desc" id="feat1-desc">
-                        Explore 54 chapters for JavaScript and 10 chapters for Python. Lessons cover core concepts, syntax, conditionals, loops, functions, and data structures.
+                        Explore 54 chapters for JavaScript and 10 chapters for Python. Lessons cover core concepts,
+                        syntax, conditionals, loops, functions, and data structures.
                     </p>
                 </div>
 
@@ -142,7 +160,8 @@
                     <div class="feature-icon">📝</div>
                     <h3 class="feature-title" id="feat2-title">Interactive Assessments</h3>
                     <p class="feature-desc" id="feat2-desc">
-                        Verify your understanding with multiple-choice quizzes and code-answering editors equipped with automated validation and complete solution breakdowns.
+                        Verify your understanding with multiple-choice quizzes and code-answering editors equipped with
+                        automated validation and complete solution breakdowns.
                     </p>
                 </div>
 
@@ -150,7 +169,8 @@
                     <div class="feature-icon">⚡</div>
                     <h3 class="feature-title" id="feat3-title">Real-Time Sandbox</h3>
                     <p class="feature-desc" id="feat3-desc">
-                        Write and execute JavaScript statements live within an integrated browser console to inspect logs, outputs, and return values instantly.
+                        Write and execute JavaScript statements live within an integrated browser console to inspect
+                        logs, outputs, and return values instantly.
                     </p>
                 </div>
 
@@ -158,7 +178,8 @@
                     <div class="feature-icon">📱</div>
                     <h3 class="feature-title" id="feat4-title">Editorial & Responsive</h3>
                     <p class="feature-desc" id="feat4-desc">
-                        Built with crisp editorial typography, dark/light theme switching, 100% phone responsiveness, and drawer navigation with zero neon/AI glow.
+                        Built with crisp editorial typography, dark/light theme switching, 100% phone responsiveness,
+                        and drawer navigation with zero neon/AI glow.
                     </p>
                 </div>
             </div>
@@ -191,7 +212,8 @@
             <main class="main-content" id="main-content">
                 <!-- Breadcrumb -->
                 <div class="doc-breadcrumb">
-                    <button class="sidebar-expand-btn" id="sidebar-expand-btn" title="Show Sidebar" style="display: none;">
+                    <button class="sidebar-expand-btn" id="sidebar-expand-btn" title="Show Sidebar"
+                        style="display: none;">
                         <span>▶</span> <span id="sidebar-expand-text">Sidebar</span>
                     </button>
                     <span id="doc-bc-chapter">Ch 1: Introduction</span>
@@ -223,8 +245,15 @@
                         Loading lesson content...
                     </p>
 
+                    <!-- Lesson diagram/flowchart image (shown only when lesson has imageUrl) -->
+                    <div id="lesson-diagram-wrapper" style="display:none; margin: 16px 0;">
+                        <img id="lesson-diagram-img" src="" alt="Lesson Diagram"
+                             style="max-width:100%; border-radius:10px; border:1px solid var(--border-color); display:block;" />
+                    </div>
+
                     <div class="spec-note-box">
-                        <strong id="spec-note-label">Developer Specification:</strong> <span id="spec-note-text">Detailed
+                        <strong id="spec-note-label">Developer Specification:</strong> <span
+                            id="spec-note-text">Detailed
                             specifications...</span>
                     </div>
 
@@ -253,27 +282,35 @@
                     </div>
                 </div>
 
-                <!-- Interactive JavaScript Sandbox -->
-                <div class="dev-tools-card" id="js-tools-card">
-                    <div class="tools-card-title">
-                        <span>⚡</span> <span id="sandbox-card-title">Interactive Code Sandbox</span>
+                <!-- Interactive JavaScript Sandbox (In-Lesson, Toggleable) -->
+                <div class="dev-tools-card sandbox-lesson-wrapper" id="js-tools-card">
+                    <div class="sandbox-toggle-header" id="sandbox-toggle-header">
+                        <div class="sandbox-toggle-title">
+                            <span>⚡</span> <span id="sandbox-card-title">Interactive Code Sandbox</span>
+                        </div>
+                        <button class="sandbox-toggle-btn" id="sandbox-toggle-btn" aria-expanded="true" title="Hide Sandbox">
+                            <span id="sandbox-toggle-icon">▲</span>
+                            <span id="sandbox-toggle-text">Hide</span>
+                        </button>
                     </div>
-                    <div class="tools-card-subtitle" id="sandbox-card-subtitle">
-                        Execute JavaScript statements in real-time and inspect output logs.
-                    </div>
-                    <textarea class="sandbox-textarea" id="js-sandbox-input" spellcheck="false">// Try running your code here!
+                    <div class="sandbox-collapsible" id="sandbox-collapsible">
+                        <div class="tools-card-subtitle" id="sandbox-card-subtitle">
+                            Execute JavaScript statements in real-time and inspect output logs.
+                        </div>
+                        <textarea class="sandbox-textarea" id="js-sandbox-input" spellcheck="false">// Try running your code here!
 let y = 2;
 if (y > 1) {
     console.log("y is greater than 1");
 }</textarea>
 
-                    <div class="sandbox-actions">
-                        <button class="btn-primary" id="run-js-btn">Run Script</button>
-                        <span style="font-size: 0.8rem; color: var(--text-secondary);" id="exec-console-label">Execution Console:</span>
-                    </div>
+                        <div class="sandbox-actions">
+                            <button class="btn-primary" id="run-js-btn">Run Script</button>
+                            <span style="font-size: 0.8rem; color: var(--text-secondary);" id="exec-console-label">Execution Console:</span>
+                        </div>
 
-                    <div class="sandbox-output-console" id="js-console-output">
-                        <div class="console-entry output" id="console-init-entry">&gt; Console initialized. Click "Run Script" to execute.</div>
+                        <div class="sandbox-output-console" id="js-console-output">
+                            <div class="console-entry output" id="console-init-entry">&gt; Console initialized. Click "Run Script" to execute.</div>
+                        </div>
                     </div>
                 </div>
 
@@ -290,6 +327,43 @@ if (y > 1) {
                     </button>
                 </div>
             </main>
+        </div>
+
+        <!-- Standalone Sandbox View -->
+        <div class="sandbox-view-container" id="sandbox-view-container" style="display: none;">
+            <div class="sandbox-view-inner">
+                <div class="sandbox-view-header">
+                    <div class="sandbox-view-title-row">
+                        <h1 class="sandbox-view-title"><span>⚡</span> <span id="sandbox-view-heading">Interactive Code Sandbox</span></h1>
+                        <p class="sandbox-view-desc" id="sandbox-view-desc">Write and run JavaScript code live. Inspect outputs, test concepts, and experiment freely.</p>
+                    </div>
+                </div>
+                <div class="sandbox-view-body">
+                    <div class="sandbox-view-editor-panel">
+                        <div class="sandbox-view-panel-label" id="sandbox-view-editor-label">📝 Code Editor</div>
+                        <textarea class="sandbox-textarea sandbox-view-textarea" id="sandbox-view-input" spellcheck="false">// Welcome to the Interactive Code Sandbox!
+// Write your JavaScript below and click Run.
+
+let message = "Hello from the Sandbox!";
+console.log(message);
+
+// Try more:
+for (let i = 1; i <= 5; i++) {
+    console.log("Count:", i);
+}</textarea>
+                        <div class="sandbox-view-actions">
+                            <button class="btn-primary" id="sandbox-view-run-btn">▶ Run Script</button>
+                            <button class="sandbox-view-clear-btn" id="sandbox-view-clear-btn">🗑 Clear Output</button>
+                        </div>
+                    </div>
+                    <div class="sandbox-view-output-panel">
+                        <div class="sandbox-view-panel-label" id="sandbox-view-console-label">🖥 Execution Console</div>
+                        <div class="sandbox-output-console sandbox-view-console" id="sandbox-view-output">
+                            <div class="console-entry output">&gt; Console ready. Click "Run Script" to execute.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

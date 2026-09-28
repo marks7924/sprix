@@ -974,6 +974,177 @@ body {
 .console-entry.output { color: #34d399; }
 .console-entry.error { color: #f87171; }
 
+/* In-Lesson Sandbox Toggle Header */
+.sandbox-lesson-wrapper {
+    padding: 0;
+    overflow: hidden;
+}
+
+.sandbox-toggle-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    cursor: default;
+    user-select: none;
+}
+
+.sandbox-toggle-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-primary);
+}
+
+.sandbox-toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 5px 12px;
+    border-radius: var(--radius-sm);
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.15s ease;
+}
+
+.sandbox-toggle-btn:hover {
+    background-color: var(--bg-surface-hover);
+    color: var(--text-primary);
+    border-color: var(--accent-primary);
+}
+
+.sandbox-collapsible {
+    padding: 0 24px 24px;
+    display: block;
+    transition: none;
+}
+
+/* ============================================================
+   STANDALONE SANDBOX VIEW (Full-Page Tab)
+   ============================================================ */
+.sandbox-view-container {
+    display: block;
+    height: calc(100vh - var(--header-height));
+    overflow: hidden;
+    background-color: var(--bg-main);
+}
+
+.sandbox-view-inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 32px 48px 24px;
+    gap: 20px;
+    overflow: hidden;
+}
+
+.sandbox-view-header {
+    flex-shrink: 0;
+}
+
+.sandbox-view-title-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.sandbox-view-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sandbox-view-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.sandbox-view-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    flex: 1;
+    min-height: 0;
+}
+
+.sandbox-view-editor-panel,
+.sandbox-view-output-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 0;
+}
+
+.sandbox-view-panel-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+}
+
+.sandbox-view-textarea {
+    flex: 1;
+    height: 100% !important;
+    min-height: 0;
+    resize: none;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+.sandbox-view-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    padding-top: 4px;
+}
+
+.sandbox-view-clear-btn {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 8px 16px;
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.15s ease;
+}
+
+.sandbox-view-clear-btn:hover {
+    background-color: var(--bg-surface-hover);
+    color: var(--text-primary);
+    border-color: var(--text-secondary);
+}
+
+.sandbox-view-console {
+    flex: 1;
+    max-height: 100%;
+    min-height: 200px;
+    overflow-y: auto;
+    font-size: 0.875rem;
+    line-height: 1.6;
+}
+
 /* CSS Visualizer Clean UI */
 .visualizer-stage {
     background-color: var(--bg-main);
@@ -1102,14 +1273,12 @@ body {
 .sidebar-overlay {
     display: none;
     position: fixed;
-    top: 0;
+    top: var(--header-height);
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: transparent;
     z-index: 150;
-    opacity: 0;
-    transition: opacity 0.25s ease;
 }
 
 @media (min-width: 769px) {
@@ -1122,7 +1291,6 @@ body {
 
 .sidebar-overlay.active {
     display: block;
-    opacity: 1;
 }
 
 /* Live Instant Search Results Dropdown */
@@ -1355,6 +1523,31 @@ html[dir="rtl"] .mobile-settings-dropdown {
     border-color: var(--accent-primary);
 }
 
+/* Mobile Sandbox Quick-Access Button (inside settings dropdown) */
+.mobile-sandbox-nav-btn {
+    width: 100%;
+    background-color: var(--accent-primary-light);
+    border: 1px solid rgba(37, 99, 235, 0.3);
+    color: var(--accent-primary);
+    padding: 12px 16px;
+    border-radius: var(--radius-md);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.2s ease;
+    font-family: inherit;
+    text-align: left;
+}
+
+.mobile-sandbox-nav-btn:hover {
+    background-color: var(--accent-primary);
+    color: white;
+    border-color: var(--accent-primary);
+}
+
 @keyframes slideDownSettings {
     from {
         opacity: 0;
@@ -1422,6 +1615,35 @@ html[dir="rtl"] .mobile-settings-dropdown {
         display: flex !important;
     }
 
+    /* Nav buttons: icon-only on mobile to save space */
+    .main-nav-links {
+        margin-left: 6px;
+        gap: 2px;
+    }
+
+    .nav-view-btn {
+        padding: 6px 10px;
+        gap: 0;
+        font-size: 0.8rem;
+        min-width: 36px;
+        justify-content: center;
+    }
+
+    /* Hide text labels inside nav buttons — show icon only */
+    .nav-view-btn span:last-child {
+        display: none;
+    }
+
+    /* Keep the emoji/icon visible */
+    .nav-view-btn span:first-child {
+        font-size: 1rem;
+    }
+
+    /* Sandbox nav text span has an id so target it specifically too */
+    #nav-sandbox-text {
+        display: none;
+    }
+
     .shortcut-hint {
         display: none;
     }
@@ -1442,6 +1664,14 @@ html[dir="rtl"] .mobile-settings-dropdown {
 
     .theme-text {
         display: none;
+    }
+
+    /* Standalone Sandbox View - make it scrollable on mobile */
+    .sandbox-view-container {
+        display: block !important;
+        height: auto;
+        min-height: calc(100vh - var(--header-height));
+        overflow-y: auto;
     }
 
     /* Home View Container Mobile Adjustments */
@@ -1514,6 +1744,10 @@ html[dir="rtl"] .mobile-settings-dropdown {
 
     .dev-tools-card {
         padding: 16px 14px;
+    }
+
+    .sandbox-lesson-wrapper {
+        padding: 0;
     }
 
     .viz-grid {
@@ -1647,6 +1881,41 @@ html[dir="rtl"] .mobile-settings-dropdown {
         align-self: flex-start;
         font-size: 1.1rem;
         padding: 4px 12px;
+    }
+
+    /* Standalone Sandbox View - Mobile */
+    .sandbox-view-inner {
+        padding: 16px 14px 16px;
+        gap: 14px;
+    }
+
+    .sandbox-view-title {
+        font-size: 1.25rem;
+    }
+
+    .sandbox-view-body {
+        grid-template-columns: 1fr;
+        overflow-y: auto;
+    }
+
+    .sandbox-view-textarea {
+        height: 180px !important;
+        flex: none;
+    }
+
+    .sandbox-view-console {
+        min-height: 150px;
+        max-height: 200px;
+        flex: none;
+    }
+
+    /* In-Lesson sandbox toggle on mobile */
+    .sandbox-toggle-header {
+        padding: 14px 14px;
+    }
+
+    .sandbox-collapsible {
+        padding: 0 14px 16px;
     }
 }
 
