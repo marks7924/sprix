@@ -2302,8 +2302,19 @@ html[dir="rtl"] .nav-link-btn.next {
     }
 }
 
-
-
-
-
-
+/* ─── Site Footer ─────────────────────────────────────────── */
+.site-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 10;
+    letter-spacing: 0.06em;
+    user-select: none;
+}

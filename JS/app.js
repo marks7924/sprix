@@ -3718,20 +3718,35 @@ h2 {
     });
 
     // Mobile Sidebar Drawer Toggle Listeners
-    if (DOM.mobileMenuToggle && DOM.sidebarOverlay) {
-        DOM.mobileMenuToggle.addEventListener('click', () => {
+    function openMobileSidebar() {
+        if (!DOM.sidebar) return;
+        // On mobile the sidebar must never carry desktop-collapsed — strip it
+        DOM.sidebar.classList.remove('desktop-collapsed');
+        DOM.sidebar.style.pointerEvents = '';
+        DOM.sidebar.classList.add('mobile-open');
+        if (DOM.sidebarOverlay) DOM.sidebarOverlay.classList.add('active');
+        if (DOM.mobileSettingsDropdown) DOM.mobileSettingsDropdown.classList.remove('active');
+    }
+
+    if (DOM.mobileMenuToggle) {
+        DOM.mobileMenuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
             if (DOM.homeViewContainer && DOM.homeViewContainer.style.display !== 'none') {
                 showCurriculumView();
             }
-            DOM.sidebar.classList.toggle('mobile-open');
-            DOM.sidebarOverlay.classList.toggle('active');
-            if (DOM.mobileSettingsDropdown) DOM.mobileSettingsDropdown.classList.remove('active');
+            const isOpen = DOM.sidebar && DOM.sidebar.classList.contains('mobile-open');
+            if (isOpen) {
+                closeMobileSidebar();
+            } else {
+                openMobileSidebar();
+            }
         });
+    }
 
+    if (DOM.sidebarOverlay) {
         DOM.sidebarOverlay.addEventListener('click', () => {
-            if (DOM.sidebar) DOM.sidebar.classList.remove('mobile-open');
             if (DOM.mobileSettingsDropdown) DOM.mobileSettingsDropdown.classList.remove('active');
-            DOM.sidebarOverlay.classList.remove('active');
+            closeMobileSidebar();
         });
     }
 
@@ -4803,7 +4818,16 @@ h2 {
         }
     }
 
-    if (DOM.sidebarCollapseBtn) DOM.sidebarCollapseBtn.addEventListener('click', () => toggleSidebar(true));
+    if (DOM.sidebarCollapseBtn) {
+        DOM.sidebarCollapseBtn.addEventListener('click', () => {
+            // On mobile: close the drawer. On desktop: collapse the sidebar panel.
+            if (window.innerWidth <= 768) {
+                closeMobileSidebar();
+            } else {
+                toggleSidebar(true);
+            }
+        });
+    }
     if (DOM.sidebarExpandBtn) DOM.sidebarExpandBtn.addEventListener('click', () => toggleSidebar(false));
 
     if (DOM.navBtnHome) DOM.navBtnHome.addEventListener('click', showHomeView);

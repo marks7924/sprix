@@ -248,7 +248,7 @@
                     <!-- Lesson diagram/flowchart image (shown only when lesson has imageUrl) -->
                     <div id="lesson-diagram-wrapper" style="display:none; margin: 16px 0;">
                         <img id="lesson-diagram-img" src="" alt="Lesson Diagram"
-                             style="max-width:100%; border-radius:10px; border:1px solid var(--border-color); display:block;" />
+                            style="max-width:100%; border-radius:10px; border:1px solid var(--border-color); display:block;" />
                     </div>
 
                     <div class="spec-note-box">
@@ -288,7 +288,8 @@
                         <div class="sandbox-toggle-title">
                             <span>⚡</span> <span id="sandbox-card-title">Interactive Code Sandbox</span>
                         </div>
-                        <button class="sandbox-toggle-btn" id="sandbox-toggle-btn" aria-expanded="true" title="Hide Sandbox">
+                        <button class="sandbox-toggle-btn" id="sandbox-toggle-btn" aria-expanded="true"
+                            title="Hide Sandbox">
                             <span id="sandbox-toggle-icon">▲</span>
                             <span id="sandbox-toggle-text">Hide</span>
                         </button>
@@ -305,11 +306,13 @@ if (y > 1) {
 
                         <div class="sandbox-actions">
                             <button class="btn-primary" id="run-js-btn">Run Script</button>
-                            <span style="font-size: 0.8rem; color: var(--text-secondary);" id="exec-console-label">Execution Console:</span>
+                            <span style="font-size: 0.8rem; color: var(--text-secondary);"
+                                id="exec-console-label">Execution Console:</span>
                         </div>
 
                         <div class="sandbox-output-console" id="js-console-output">
-                            <div class="console-entry output" id="console-init-entry">&gt; Console initialized. Click "Run Script" to execute.</div>
+                            <div class="console-entry output" id="console-init-entry">&gt; Console initialized. Click
+                                "Run Script" to execute.</div>
                         </div>
                     </div>
                 </div>
@@ -334,14 +337,17 @@ if (y > 1) {
             <div class="sandbox-view-inner">
                 <div class="sandbox-view-header">
                     <div class="sandbox-view-title-row">
-                        <h1 class="sandbox-view-title"><span>⚡</span> <span id="sandbox-view-heading">Interactive Code Sandbox</span></h1>
-                        <p class="sandbox-view-desc" id="sandbox-view-desc">Write and run JavaScript code live. Inspect outputs, test concepts, and experiment freely.</p>
+                        <h1 class="sandbox-view-title"><span>⚡</span> <span id="sandbox-view-heading">Interactive Code
+                                Sandbox</span></h1>
+                        <p class="sandbox-view-desc" id="sandbox-view-desc">Write and run JavaScript code live. Inspect
+                            outputs, test concepts, and experiment freely.</p>
                     </div>
                 </div>
                 <div class="sandbox-view-body">
                     <div class="sandbox-view-editor-panel">
                         <div class="sandbox-view-panel-label" id="sandbox-view-editor-label">📝 Code Editor</div>
-                        <textarea class="sandbox-textarea sandbox-view-textarea" id="sandbox-view-input" spellcheck="false">// Welcome to the Interactive Code Sandbox!
+                        <textarea class="sandbox-textarea sandbox-view-textarea" id="sandbox-view-input"
+                            spellcheck="false">// Welcome to the Interactive Code Sandbox!
 // Write your JavaScript below and click Run.
 
 let message = "Hello from the Sandbox!";
@@ -370,8 +376,12 @@ for (let i = 1; i <= 5; i++) {
     <!-- Toast Notification Container -->
     <div id="toast-container" class="toast-container"></div>
 
+    <!-- Footer -->
+    <footer class="site-footer">
+        <span>Mark S.</span>
+    </footer>
+
     <!-- Main Engine Application Script -->
     <script src="JS/app.js"></script>
 </body>
-
 </html>
